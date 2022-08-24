@@ -1,0 +1,132 @@
+{% extends 'core/index.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static '/core/css/favorite_tracks_style.css' %}" type="text/css"/>
+
+<title>Your favorite track</title>
+
+<div class="div-favorite-tracks">
+
+    {% if request.user.is_authenticated %}
+
+    <div class="div-player-block">
+
+        <div class="div-favorite-track-title">
+            <h2 class="h2-favorite-track-title">YOUR FAVORITE TRACK</h2>
+        </div>
+
+        <div class="div-player-block-help-title">
+            <h5 class="h5-player-block-help-title">NAME</h5>
+            <h5 class="h5-player-block-help-title title-add-date">ADD DATE</h5>
+            <h5 class="h5-player-block-help-title title-time">TIME</h5>
+        </div>
+
+        <div style="margin-top: 100px;" class="player-song">
+
+            {% for music in like_track_html %}
+            <button class="button-player-block-track" style="height: 55px; display: block; "
+                    data-name="{{ music.track.title }}" data-index=""
+                    data-audio="{{ music.track.track_url }}" data-active=""
+                    id="track-id-" data-author="{{ music.track.author }}">
+                <div class="div-player-block-track">
+                    <div class="div-player-block-track-img-info">
+                        <div class="div-player-block-track-img">
+                            <img class="img-player-block-track-imagen" src="{{ music.track.image.url }}"
+                                 alt="music_icon">
+                        </div>
+
+                        <div class="div-player-block-track-info">
+                            <div>
+                                <a class="a-player-block-track-title" href="{{ music.track.get_absolute_url }}"
+                                   id="track-title-id">
+                                    {{ music.track.title }}</a>
+                            </div>
+                            <div>
+                                <a class="a-player-block-track-author"
+                                   id="track-author-id">
+                                    {{ music.track.author }}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="div-player-block-duration-track" style="">
+                        <div style="display: inline-block;">
+                            <p class="p-player-block-duration-track" id="duration-time-id">
+                                {{ music.track.duration_track }}</p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="div-player-block-audio-player">
+        <audio style="display: none" preload="auto" controls class="audio" id="audio"
+               ontimeupdate="nextAudioAfterAudio()">
+            <source class="source-class" id="source-id" src="" type="audio/mp3">
+        </audio>
+
+        <div class="div-audio-player-range" id="div-audio_track-id">
+            <input class="input-audio-player-range" type="range" id="audio_track" min="0" max="" value="0"/>
+            <div class="div-audio-player-track-time">
+                <div class="div-audio-player-track-current-time" id="currentTime">00:00</div>
+                <div class="div-audio-player-track-duration-time" id="durationTime">00:00</div>
+            </div>
+        </div>
+        <div class="div-audio-player-track-info-action">
+            <div class="div-audio-player-track-action">
+                <div class="div-audio-player-track-action-button-left">
+                    <button class="button-audio-player-skip prev" id="prev" onclick="previousAudio()"><img
+                            class="img-audio-player-skip"
+                            style="width: 20px; height: 20px; cursor: pointer;"
+                            src="/static/core/img/skip_track.svg"></button>
+                    <button class="button-audio-player-rewind" onclick="rewind()"><img class="img-audio-player-rewind"
+                                                                                       style="width: 20px; height: 20px; cursor: pointer;"
+                                                                                       src="/static/core/img/rewind_track.svg">
+                    </button>
+                </div>
+                <div class="div-audio-player-play-pause">
+                    <button class="button-audio-player-play-pause" onclick="toggleAudio()" id="play">
+                        <img class="img-audio-player-play" id="play-img-one"
+                             style="height: 30px; width: 30px; cursor: pointer; "
+                             src="/static/core/img/play_player.svg" alt="play">
+                        <img class="img-audio-player-pause" id="pause-img-one"
+                             style="height: 30px; width: 30px; display: none; cursor: pointer; "
+                             src="/static/core/img/pause_player.svg"
+                             alt="pause">
+                    </button>
+                </div>
+                <div class="div-audio-player-track-action-button-right">
+                    <button class="button-audio-player-forward" onclick="forward()">
+                        <img class="img-audio-player-forward"
+                             style="width: 20px; height: 20px; cursor: pointer; transform: rotate(0.5turn);"
+                             src="/static/core/img/rewind_track.svg"></button>
+                    <button class="button-audio-player-skip next" id="next" onclick="nextAudio()"><img
+                            class="img-audio-player-skip next-track"
+                            style="width: 20px; height: 20px; cursor: pointer; transform: rotate(0.5turn);"
+                            src="/static/core/img/skip_track.svg"></button>
+                </div>
+            </div>
+            <div class="div-audio-player-track-info">
+                <div class="div-audio-player-track-title"></div>
+                <div class="div-audio-player-track-author"></div>
+            </div>
+            <div class="div-audio-player-track-download">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+
+    <div class="div-favorite-tracks-not-authenticated">
+        <h2 class="h2-favorite-tracks-not-authenticated">
+            To activate this function, please log in!</h2>
+    </div>
+
+</div>
+{% endif %}
+<script src="/static/core/js/player_main_page.js"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'core/index.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/core/css/login_style.css' %}" type="text/css"/>
+
+<div class="div-login">
+    <div class="div-login-form">
+        <form style="" action="" method="post">
+            <div class="div-login-two-form">
+                <h3 style="color: #EE82EE; text-shadow: 0 0 5px #EE82EE; font-family: Tahoma, serif;
+                text-align: center;" class="text-center">
+                    Authorization</h3>
+                <div class="div-login-line" style=""></div>
+                <div class="div-login-three-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="div-login-under-fields">
+                        <input type="submit" class="button-login-form" value="Sign in">
+                        <div class="div-login-create-account">
+                            <div class="div-login-two-create-account">
+                                <a class="a-login-create-account" href="{% url 'create_account' %}">Create account</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,380 @@
+html {
+    height: 600px;
+}
+
+body {
+    background: #000000;
+}
+
+.div-base-playlist-player-block {
+    width: 300px;
+    height: 420px;
+    float: left;
+    border-radius: 10px;
+    margin-left: 550px;
+    margin-top: 100px;
+    z-index: 1;
+}
+
+.div-base-playlist-player-block-blur {
+    width: 300px;
+    height: 420px;
+    border-radius: 10px;
+    filter: blur(15px);
+}
+
+.div-base-playlist-player-block-two {
+    width: 250px;
+    height: 375px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -405px;
+}
+
+/* player image style ---------------------------------------------------------------------------------------------   */
+
+.div-base-playlist-player-track-image {
+    height: 230px;
+    width: 250px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #000000;
+}
+
+.active-image {
+    animation: motion 1s linear infinite alternate;
+}
+
+@keyframes motion {
+    0% {
+        top: -15px;
+    }
+    100% {
+        top: 5px;
+    }
+}
+
+.div-base-playlist-player-track-image-two {
+    height: 210px;
+    width: 230px;
+    position: relative;
+    top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #000000;
+}
+
+.img-base-playlist-player-track-image {
+    height: 210px;
+    width: 230px;
+    border-radius: 20px;
+}
+
+/* player info style ----------------------------------------------------------------------------------------------   */
+
+.div-base-playlist-player-track-info-block {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.div-base-playlist-player-track-info {
+    max-width: max-content;
+    max-height: max-content;
+    margin: 20px auto -15px auto;
+}
+
+.div-base-playlist-player-track-title, .div-base-playlist-player-track-author {
+    display: inline-block;
+    max-width: 110px;
+    max-height: max-content;
+    font-family: fantasy, serif;
+    background: #111;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: black;
+    font-size: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.div-base-playlist-player-track-author {
+    margin-left: 10px;
+}
+
+/* player range style ---------------------------------------------------------------------------------------------   */
+
+.input-base-playlist-player-range {
+    width: 250px;
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 12px;
+    box-shadow: inset 0 0 5px #000000;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0;
+    height: 10px;
+    z-index: 5;
+    box-shadow: -650px 0 0 650px #111;
+}
+
+/* player time style ----------------------------------------------------------------------------------------------   */
+
+.div-base-playlist-player-track-time {
+    width: 250px;
+    height: 30px;
+    margin-top: 5px;
+    font-size: 80%;
+    color: #111;
+    font-family: Tahoma, serif;
+}
+
+.div-base-playlist-player-track-current-time {
+    display: inline-block;
+}
+
+.div-base-playlist-player-track-duration-time {
+    float: right;
+    display: inline-block;
+}
+
+/* player action style --------------------------------------------------------------------------------------------   */
+
+.div-base-playlist-player-track-action-block {
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+
+
+.div-base-playlist-player-track-action {
+    max-width: max-content;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.div-base-playlist-player-track-action-button-left, .div-base-playlist-player-play-pause, .div-base-playlist-player-track-action-button-right {
+    display: inline-block;
+
+}
+
+.button-base-playlist-player-skip, .button-base-playlist-player-rewind, .button-base-playlist-player-forward, .button-base-playlist-player-play-pause {
+    background: transparent;
+    border: none;
+
+}
+
+.div-base-playlist-player-track-action-button-left, .div-base-playlist-player-track-action-button-right {
+    position: relative;
+    top: -5px;
+}
+
+.img-base-playlist-player-play, .img-base-playlist-player-pause, .img-base-playlist-player-skip, .img-base-playlist-player-rewind,
+.img-base-playlist-player-forward {
+    transition: transform 0.1s linear;
+}
+
+.img-base-playlist-player-play:hover, .img-base-playlist-player-pause:hover, .img-base-playlist-player-skip:hover, .img-base-playlist-player-rewind:hover,
+.img-base-playlist-player-forward:hover {
+    transform: scale(1.1);
+}
+
+.img-base-playlist-player-forward:hover, .next-track:hover {
+    transform: scale(1.1) rotate(0.5turn) !important;
+
+
+}
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+.div-base-playlist-player-block-hidden-button {
+    background: rgba(255, 255, 255, 0.5);
+    height: 400px;
+    width: 20px;
+    position: relative;
+    border-radius: 10px;
+
+}
+
+/* track block -----------------------------------------------------------------------------------------------------  */
+
+.div-base-playlist-player-block-track-all {
+    height: 40px;
+    width: 250px;
+    pointer-events: none;
+    margin-left: 40px;
+}
+
+.button-player-block-track {
+    min-width: 290px;
+    max-width: 315px;
+    background: #e5e5e5;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.1s linear;
+}
+
+.button-player-block-track:hover {
+    background: #F5F5F5;
+}
+
+.player-song {
+    position: relative;
+    top: 30px;
+    margin-left: 15px;
+}
+
+.active-track {
+    background: #F5F5F5;
+    border: none;
+    cursor: auto;
+}
+
+/* image track style -----------------------------------------------------------------------------------------------  */
+
+.play-img-main {
+    margin-top: -52px;
+    margin-left: 10px;
+    pointer-events: none;
+}
+
+.div-base-playlist-player-track-img, .img-base-playlist-player-track-imagen {
+    height: 40px;
+    width: 40px;
+
+}
+
+.div-base-playlist-player-track-img {
+    float: left;
+}
+
+.div-base-playlist-player-track-img, .div-base-playlist-player-block-track-delete, .div-base-playlist-player-block-track-info {
+    display: inline-block;
+}
+
+/* info track style ------------------------------------------------------------------------------------------------  */
+
+.div-base-playlist-player-block-track-info {
+    position: relative;
+    height: 40px;
+    width: 150px;
+    left: -10px;
+}
+
+.p-base-playlist-player-block-track-author {
+    margin-top: -15px;
+}
+
+.div-base-playlist-player-block-track-delete {
+    float: right;
+    position: relative;
+    top: 10px;
+}
+
+.p-base-playlist-player-block-track-title, .p-base-playlist-player-block-track-author {
+    position: relative;
+    top: -8px;
+    text-align: left;
+    font-family: Tahoma, serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+/* delete button track style ---------------------------------------------------------------------------------------  */
+
+.img-delete-button {
+    height: 15px;
+    width: 15px;
+    margin-left: -15px;
+    position: relative;
+    left: -6.2px;
+    top: -2px;
+    pointer-events: auto;
+    cursor: pointer;
+
+}
+
+.input-base-playlist-player-block-track-delete {
+    height: 20px;
+    width: 20px;
+    background: none;
+    border: none;
+}
+
+/* close button block style ----------------------------------------------------------------------------------------  */
+
+.img-base-playlist-player-block-hidden-button-x:hover {
+    transform: scale(1.1);
+}
+
+.div-base-playlist-player-block-hidden-button-x {
+    display: none;
+    height: 10px;
+    width: 10px;
+    position: relative;
+    top: 12px;
+    z-index: 2;
+    margin-left: 305px;
+}
+
+/* block(hidden) style ---------------------------------------------------------------------------------------------  */
+
+.div-base-playlist-player-block-hidden {
+    position: relative;
+    float: left;
+    max-width: max-content;
+    max-height: 400px;
+    margin-top: 110px;
+    margin-left: 10px;
+    background: #000;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 1s linear;
+    cursor: pointer;
+}
+
+.div-base-playlist-player-block-hidden:hover {
+    opacity: 1;
+}
+
+/* not track block style -------------------------------------------------------------------------------------------  */
+
+.div-base-playlist-player-block-not-track {
+    width: 800px;
+    height: 400px;
+    box-shadow: 0 0 15px #00FFFF;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+
+.h2-base-playlist-player-block-not-track {
+    text-align: center;
+    font-family: Tahoma, serif;
+    color: #EE82EE;
+    position: relative;
+    top: 50px;
+
+}

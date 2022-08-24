@@ -1,0 +1,135 @@
+.nav-index-line-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 70px;
+    padding-left: 300px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #000 0%, #000 50%,
+    rgba(139, 0, 139, 1) 100%);
+    z-index: 5;
+    box-shadow: 0 0 10px #000;
+    border-bottom: solid 2px rgba(139, 0, 139, 1);
+}
+
+/*  circle style -----------------------------------------------------------------------------------------------------*/
+
+.div-index-line-top-circle {
+    height: 80px;
+    width: 80px;
+    box-shadow: inset 0 0 15px #EE82EE;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin-top: -30px;
+}
+
+.small-circle {
+    height: 50px;
+    width: 50px;
+    margin-left: 58px;
+    margin-top: -5px;
+}
+
+/* search style ----------------------------------------------------------------------------------------------------- */
+
+.div-index-line-top-search {
+    transform: scale(.0);
+    float: left;
+    display: none;
+    transition: all .3s ease-in-out;
+    width: 405px;
+    margin-top: -43px;
+    margin-left: -20px;
+}
+
+.div-index-line-top-search-button {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+}
+
+.button-index-line-top-search-button {
+    border: none;
+    display: block;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    background: transparent;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.input-index-line-top-search {
+    width: 360px;
+    height: 45px;
+    float: left;
+    border-radius: 5px;
+    border: solid 2px #00CED1;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    background: #222;
+    box-shadow: inset 0 0 15px #000;
+    color: #00CED1;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 95%;
+}
+
+.input-index-line-top-search:focus {
+    outline: none;
+    border: solid 2px #00FFFF;
+    box-shadow: 0 0 5px #00FFFF;
+    background: rgba(139, 0, 139, 0.1);
+}
+
+.button-index-line-top-search {
+    height: 45px;
+    width: 45px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background: transparent;
+}
+
+/* user(account, login) style --------------------------------------------------------------------------------------  */
+
+.div-index-line-top-user {
+    float: right;
+    margin-top: -40px;
+    margin-right: 50px;
+}
+
+.img-index-line-top-user-login {
+    height: 40px;
+    width: 40px;
+}
+
+.img-index-line-top-user-account {
+    height: 44px;
+    width: 44px;
+}
+
+.p-index-line-top-user-login, .p-index-line-top-user-account {
+    position: relative;
+    left: 45px;
+    top: -45px;
+    font-size: 110%;
+    color: #EE82EE;
+    text-shadow: 0 0 5px #000;
+    font-family: Tahoma, serif;
+}
+
+.p-index-line-top-user-login:hover, .p-index-line-top-user-account:hover {
+    text-shadow: 0 0 5px #EE82EE;
+}
+
+.p-index-line-top-user-account:hover span {
+    text-shadow: 0 0 5px #000;
+}
+
+.p-index-line-top-user-account {
+    top: -48px;
+}
+
+

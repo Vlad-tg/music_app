@@ -1,0 +1,46 @@
+{% extends 'core/index.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static '/core/css/genre_style.css' %}" type="text/css"/>
+
+<div class="div-genre-content">
+    <div class="div-genre-content-genre">
+        <div class="div-genre-content-genre-title">
+            <h2 class="h2-genre-content-genre-text">MUSIC GENRE</h2>
+        </div>
+        <div class="div-genre-content-genre-all">
+            {% for genre in genre_html %}
+
+            <div style="" data-color="{{ category.color }}" id="genre-"
+                 class="div-genre-content-genre-herself">
+                <a class="link" style="" href="{% url 'base_genre' slug=genre.slug %}">
+                    <div class="div-genre-content-genre-name">
+                        <p class="p-genre-content-genre-name">{{ genre.name }}</p>
+                        <div class="div-genre-content-genre-image">
+                            <img class="img-genre-content-genre-image" alt="icon_music"
+                                 src="/static/core/img/music_icon.svg">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    function createGenreBackground(index) {
+        const genre = document.querySelector('.div-genre-content-genre-herself')
+        genre.setAttribute("id", "genre-" + index);
+        document.querySelector(".div-genre-content-genre").appendChild(genre);
+    }
+
+    const genre = document.querySelectorAll(".div-genre-content-genre-herself")
+    genre.forEach(function (Genre, index) {
+        createGenreBackground(index)
+    })
+</script>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'core/index.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static '/core/css/search_style.css' %}" type="text/css"/>
+
+<div class="div-search">
+    <div class="div-search-result">
+
+        <h2 class="h2-search-result-title">SEARCH RESULT</h2>
+        {% for song in song_html %}
+        <div class="div-search-result-track">
+            <div class="div-search-result-track-image-like">
+                <div class="div-search-result-track-image">
+                    <img class="img-search-result-track-image"
+                         style="height: 180px; width: 180px; margin-left: 10px; filter: drop-shadow(0 0 15px #000); position: relative;  top: 10px;"
+                         src="{{ song.image.url }}">
+                </div>
+
+                <div class="div-search-result-track-like">
+                    <img class="img-search-result-track-like"
+                         style="height: 30px; width: 30px; filter: drop-shadow(0 0 5px #EE82EE)"
+                         src="/static/core/img/like_active.svg">
+                    <p class="p-search-result-track-like-count">({{ song.all_like.count }})</p>
+                </div>
+
+            </div>
+
+            <div class="div-search-result-track-full-info">
+                <div class="div-search-result-track-info">
+                    <center>
+                        <p class="p-search-result-track-title-author"><a class="a-search-result-track-title-author"
+                                                                         href="{{ song.get_absolute_url }}">
+                            {{ song.title }} - {{ song.author }}</a></p>
+                    </center>
+                </div>
+
+                <div class="div-search-result-track-detail-info">
+
+                    <div class="div-search-result-track-detail-info-two">
+                        <p class="p-search-result-track-detail-info">Date added: <span
+                                class="span-search-result-track-detail-info">{{ song.data_added }}</span></p>
+                        <p class="p-search-result-track-detail-info">Duration track: <span
+                                class="span-search-result-track-detail-info">{{ song.duration_track }}</span></p>
+                        <p class="p-search-result-track-detail-info">Format: <span
+                                class="span-search-result-track-detail-info">{{ song.format }}</span></p>
+                        <p class="p-search-result-track-detail-info">Size file: <span
+                                class="span-search-result-track-detail-info">{{ song.size_file }}</span></p>
+                        <p class="p-search-result-track-detail-info">Bitrate: <span
+                                class="span-search-result-track-detail-info">{{ song.bitrate }}</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{% endblock %}

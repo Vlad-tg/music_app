@@ -1,0 +1,147 @@
+/* genre icon style ------------------------------------------------------------------------------------------------- */
+
+.div-genre-content {
+    margin-top: 125.8px;
+    margin-left: 242px;
+    max-width: 1475px;
+    min-width: 800px;
+    margin-right: -8px;
+}
+
+.div-genre-content-genre {
+    padding-right: -38px;
+    padding-left: 35px;
+    overflow: hidden;
+}
+
+.div-genre-content-genre-all {
+    align-items: center;
+}
+
+
+.div-genre-content-genre-herself {
+    float: left;
+    margin-bottom: 41.8px;
+    margin-right: 35px;
+    cursor: pointer;
+    min-width: 200px;
+    max-width: 205px;
+    height: 230px;
+    border-radius: 20px;
+    z-index: 1;
+    background: green;
+}
+
+.div-genre-content-genre-herself::before {
+    content: '';
+    float: left;
+    margin-bottom: 41.8px;
+    margin-right: 35px;
+    width: 100%;
+    border-radius: 20px;
+    height: 100%;
+    z-index: -1;
+    filter: blur(15px);
+}
+
+/* background color style for icon genre ---------------------------------------------------------------------------- */
+
+#genre-0, #genre-0::before {
+    background: -webkit-linear-gradient(145deg, #00BFFF 0%, #8A2BE2 100%);
+    border: solid 2px #000;
+}
+
+#genre-1, #genre-1::before {
+    background: -webkit-linear-gradient(145deg, #8A2BE2 0%, #00BFFF 100%);
+    border: solid 2px #000;
+}
+
+#genre-2, #genre-2::before {
+    background: -webkit-linear-gradient(145deg, #FFD700 0%, #DC143C 100%);
+    border: solid 2px #000;
+}
+
+#genre-3, #genre-3::before {
+    background: -webkit-linear-gradient(145deg, #DC143C 0%, #FFD700 100%);
+    border: solid 2px #000;
+}
+
+#genre-4, #genre-4::before {
+    background: -webkit-linear-gradient(145deg, #8A2BE2 0%, #DC143C 100%);
+    border: solid 2px #000;
+}
+
+#genre-5, #genre-5::before {
+    background: -webkit-linear-gradient(145deg, #DC143C 0%, #8A2BE2 100%);
+    border: solid 2px #000;
+}
+
+/* genre name style ------------------------------------------------------------------------------------------------- */
+
+.div-genre-content-genre-name {
+    position: absolute;
+    border-radius: 20px;
+    min-width: 200px;
+    min-height: 230px;
+    max-width: 200px;
+    max-height: 230px;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.p-genre-content-genre-name {
+    z-index: 5;
+    max-width: 170px;
+    margin-top: 180px;
+    margin-left: 15px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 5px #000;
+    text-decoration: none;
+    font-family: fantasy, serif;
+    font-size: 100%;
+}
+
+/* title style ------------------------------------------------------------------------------------------------------ */
+
+.div-genre-content-genre-title {
+    margin-left: 20px;
+    margin-top: -20px;
+    margin-bottom: 35.8px;
+
+}
+
+.div-genre-content-genre-title {
+    color: #00FFFF;
+    text-shadow: 0 0 5px #000;
+    font-family: Tahoma, serif;
+
+}
+
+/* image genre style ------------------------------------------------------------------------------------------------ */
+
+.div-genre-content-genre-image {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    top: -230px;
+    left: 90px;
+    /*border-radius: 20px;*/
+    transform: rotate(-0.18turn);
+    box-shadow: inset 0 0 5px #000;
+}
+
+.img-genre-content-genre-image {
+    height: 80px;
+    width: 80px;
+    transform: rotate(-0.6955turn);
+    position: relative;
+    top: 25px;
+    left: 25px;
+    filter: drop-shadow(0 0 15px #000000);
+
+}
+
+#genre-0:hover, #genre-1:hover, #genre-2:hover, #genre-3:hover, #genre-4:hover, #genre-5:hover {
+    filter: opacity(90%)
+}

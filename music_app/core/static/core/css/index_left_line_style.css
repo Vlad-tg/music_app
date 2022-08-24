@@ -1,0 +1,206 @@
+.div-index-menu-left {
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-right: solid 2px rgba(139, 0, 139, 1);
+    box-shadow: 0 0 10px #000;
+    background: linear-gradient(160deg, #000 0%, #000 50%, rgba(139, 0, 139, 0.7) 100%);
+    z-index: 6;
+    overflow: hidden;
+}
+
+/* circle style ----------------------------------------------------------------------------------------------------- */
+
+.div-index-menu-circle {
+    height: 190px;
+    width: 190px;
+    border-radius: 50%;
+    margin-top: -80px;
+    margin-left: -100px;
+    box-shadow: inset 0 0 15px #00FFFF;
+}
+
+.div-index-manu-left-small-circle {
+    height: 80px;
+    width: 80px;
+    box-shadow: inset 0 0 15px #00FFFF;
+    border-radius: 50%;
+    position: relative;
+}
+
+.right {
+    height: 100px;
+    width: 100px;
+    margin-top: -250px;
+    margin-left: 170px;
+}
+
+/* title(name) site style ------------------------------------------------------------------------------------------- */
+
+.div-index-menu-left-two {
+    margin-right: auto;
+    margin-left: auto;
+    width: 210px;
+}
+
+.div-index-manu-left-name-emblem-block {
+    margin-bottom: 200px;
+}
+
+.div-index-manu-left-name {
+    background: #000;
+    width: 200px;
+    border-radius: 25%;
+    position: relative;
+    top: 130px;
+    left: 120px;
+    box-shadow: 0 0 5px #EE82EE;
+    animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        box-shadow: 0 0 5px #EE82EE;
+    }
+
+    20%, 24%, 55% {
+        box-shadow: none;
+    }
+
+}
+
+.h2-index-manu-left-name {
+    font-family: Tahoma, serif;
+    font-size: 135%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    background: -webkit-linear-gradient(175deg, #EE82EE 0%, #9400D3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.h2-index-manu-left-name::before {
+    content: 'MUSICWeBSitE';
+    font-family: Tahoma, serif;
+    position: absolute;
+    filter: blur(10px);
+    background: -webkit-linear-gradient(175deg, #EE82EE 0%, #9400D3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* menu(home) style ------------------------------------------------------------------------------------------------- */
+
+.img-index-menu-left-home-page {
+    height: 30px;
+    width: 30px;
+    filter: drop-shadow(0 0 10px #00CED1);
+}
+
+.a-index-menu-left-home-page {
+    position: relative;
+    top: -6px;
+    text-decoration: none;
+    color: #00FFFF;
+    font-size: 90%;
+    text-shadow: 0 0 40px #000;
+    font-family: Tahoma, serif;
+
+}
+
+.a-index-menu-left-home-page:hover {
+    text-decoration: underline;
+}
+
+
+.div-index-menu-left-under-emblem {
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+/* menu(genre) style ------------------------------------------------------------------------------------------------ */
+
+.div-index-menu-left-genre {
+    margin-top: 5px;
+}
+
+.img-index-menu-left-genre {
+    height: 30px;
+    width: 30px;
+    filter: drop-shadow(0 0 10px #00FFFF);
+
+}
+
+.a-index-menu-left-genre {
+    position: relative;
+    top: -6px;
+    text-decoration: none;
+    color: #00FFFF;
+    font-size: 90%;
+    text-shadow: 0 0 40px #000;
+    font-family: Tahoma, serif;
+}
+
+.a-index-menu-left-genre:hover {
+    text-decoration: underline;
+}
+
+/* menu(playlist) style --------------------------------------------------------------------------------------------- */
+
+.div-index-menu-left-playlists {
+    margin-top: 20px;
+}
+
+.img-index-menu-left-playlists {
+    height: 30px;
+    width: 30px;
+    filter: drop-shadow(0 0 10px #00FFFF);
+}
+
+.a-index-menu-left-playlists {
+    position: relative;
+    top: -10px;
+    text-decoration: none;
+    color: #00FFFF;
+    font-size: 90%;
+    text-shadow: 0 0 40px #000;
+    font-family: Tahoma, serif;
+}
+
+.a-index-menu-left-playlists:hover {
+    text-decoration: underline;
+
+}
+
+/* menu(like) style ------------------------------------------------------------------------------------------------- */
+
+.div-index-menu-left-like {
+    margin-top: 5px;
+}
+
+.img-index-menu-left-like {
+    height: 25px;
+    width: 25px;
+    margin-left: 3px;
+    filter: drop-shadow(0 0 10px #00FFFF);
+}
+
+.a-index-menu-left-like {
+    position: relative;
+    top: -6px;
+    margin-left: 4px;
+    text-decoration: none;
+    color: #00FFFF;
+    font-size: 90%;
+    text-shadow: 0 0 40px #000;
+    font-family: Tahoma, serif;
+}
+
+.a-index-menu-left-like:hover {
+    text-decoration: underline;
+}
+

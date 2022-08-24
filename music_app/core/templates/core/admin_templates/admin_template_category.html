@@ -1,0 +1,206 @@
+{% extends 'admin/change_form.html' %}
+
+{% block inline_field_sets %}
+
+
+<style>
+    #gradient-0 {
+        fill: url(#pink-purple);
+    }
+
+    #gradient-0-conversely {
+        fill: url(#pink-purple-conversely);
+    }
+
+    #gradient-1 {
+        fill: url(#red-yellow);
+    }
+
+    #gradient-1-conversely {
+        fill: url(#red-yellow-conversely);
+    }
+
+    #gradient-2 {
+        fill: url(#blue-purple);
+    }
+
+    #gradient-2-conversely {
+        fill: url(#blue-purple-conversely);
+    }
+
+    .div-all-square-example-gradient-color {
+        width: 400px;
+
+    }
+
+    .div-square-example-gradient-color {
+        border-radius: 14px;
+        display: inline-block;
+        box-shadow: none;
+        margin-left: 10px;
+        height: 49px;
+        cursor: pointer;
+        width: 49px;
+        z-index: 1;
+        background: transparent;
+
+    }
+
+    .div-square-example-gradient-color:hover {
+        box-shadow: 0 0 10px #000;
+
+    }
+
+    .field-color {
+        margin-top: 100px;
+    }
+</style>
+<div style="position: relative; top: -285px; left: 160px; ">
+    <div class="div-all-square-example-gradient-color">
+        <center>
+
+            <div style="width: 362px; border-radius: 10px; height: 50px;">
+                <div class="div-square-example-gradient-color" style="margin-left: 0;"
+                     data-color="background: linear-gradient(135deg, rgba(136, 78, 160, 1) 0%, rgba(255,20,147, 1) 100%);">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px"
+                         viewBox="0 0 483.48 483.48"
+                         preserveAspectRatio="xMidYMid meet">
+                        <g id="gradient-0" stroke="none">
+                            <path d="M361.08,0H122.4C54.799,0,0,54.798,0,122.4v238.68c0,67.602,54.799,122.4,122.4,122.4h238.68
+			c67.602,0,122.4-54.799,122.4-122.4V122.4C483.48,54.798,428.682,0,361.08,0z"/>
+                        </g>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+                        <defs>
+                            <linearGradient id="pink-purple" y1="0%" y2="100%" x1="0%" x2="100%">
+                                <stop offset="0%" stop-color="rgba(136, 78, 160, 1)"/>
+                                <stop offset="100%" stop-color="rgba(255,20,147, 1)"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="div-square-example-gradient-color"
+                     data-color="background: linear-gradient(135deg, rgba(255,20,147, 1) 0%, rgba(136, 78, 160, 1) 100%);">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px"
+                         viewBox="0 0 483.48 483.48"
+                         preserveAspectRatio="xMidYMid meet">
+                        <g id="gradient-0-conversely" stroke="none">
+                            <path d="M361.08,0H122.4C54.799,0,0,54.798,0,122.4v238.68c0,67.602,54.799,122.4,122.4,122.4h238.68
+			c67.602,0,122.4-54.799,122.4-122.4V122.4C483.48,54.798,428.682,0,361.08,0z"/>
+                        </g>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+                        <defs>
+                            <linearGradient id="pink-purple-conversely" y1="100%" y2="0%" x1="100%" x2="0%">
+                                <stop offset="0%" stop-color="rgba(136, 78, 160, 1)"/>
+                                <stop offset="100%" stop-color="rgba(255,20,147, 1)"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="div-square-example-gradient-color"
+                     data-color="background: linear-gradient(135deg, rgba(220,20,60, 1) 0%, rgba(255,215,0, 1) 100%);">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px"
+                         viewBox="0 0 483.48 483.48"
+                         preserveAspectRatio="xMidYMid meet">
+                        <g id="gradient-1" stroke="none">
+                            <path d="M361.08,0H122.4C54.799,0,0,54.798,0,122.4v238.68c0,67.602,54.799,122.4,122.4,122.4h238.68
+			c67.602,0,122.4-54.799,122.4-122.4V122.4C483.48,54.798,428.682,0,361.08,0z"/>
+                        </g>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+                        <defs>
+                            <linearGradient id="red-yellow" y1="0%" y2="100%" x1="0%" x2="100%">
+                                <stop offset="0%" stop-color="rgba(220,20,60, 1)"/>
+                                <stop offset="100%" stop-color="rgba(255,215,0, 1)"/>
+
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="div-square-example-gradient-color"
+                     data-color="background: linear-gradient(135deg, rgba(255,215,0, 1) 0%,rgba(220,20,60, 1) 100%);">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px"
+                         viewBox="0 0 483.48 483.48"
+                         preserveAspectRatio="xMidYMid meet">
+                        <g id="gradient-1-conversely" stroke="none">
+                            <path d="M361.08,0H122.4C54.799,0,0,54.798,0,122.4v238.68c0,67.602,54.799,122.4,122.4,122.4h238.68
+			c67.602,0,122.4-54.799,122.4-122.4V122.4C483.48,54.798,428.682,0,361.08,0z"/>
+                        </g>
+
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+                        <defs>
+                            <linearGradient id="red-yellow-conversely" y1="100%" y2="0%" x1="100%" x2="0%">
+                                <stop offset="0%" stop-color="rgba(220,20,60, 1)"/>
+                                <stop offset="100%" stop-color="rgba(255,215,0, 1)"/>
+
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="div-square-example-gradient-color"
+                     data-color="background: -webkit-linear-gradient(135deg, #00BFFF 0%, #8A2BE2 100%);">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px"
+                         viewBox="0 0 483.48 483.48"
+                         preserveAspectRatio="xMidYMid meet">
+                        <g id="gradient-2" stroke="none">
+                            <path d="M361.08,0H122.4C54.799,0,0,54.798,0,122.4v238.68c0,67.602,54.799,122.4,122.4,122.4h238.68
+			c67.602,0,122.4-54.799,122.4-122.4V122.4C483.48,54.798,428.682,0,361.08,0z"/>
+                        </g>
+
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+                        <defs>
+                            <linearGradient id="blue-purple" y2="100%" x1="0%" x2="100%">
+                                <stop offset="0%" stop-color="#8A2BE2"/>
+                                <stop offset="100%" stop-color="#00BFFF"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="div-square-example-gradient-color"
+                     data-color="background: -webkit-linear-gradient(145deg, #8A2BE2 0%, #00BFFF 100%);"
+                     id="div-blue-purple-conversely">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px"
+                         viewBox="0 0 483.48 483.48"
+                         preserveAspectRatio="xMidYMid meet">
+                        <g id="gradient-2-conversely" stroke="none">
+                            <path d="M361.08,0H122.4C54.799,0,0,54.798,0,122.4v238.68c0,67.602,54.799,122.4,122.4,122.4h238.68
+			c67.602,0,122.4-54.799,122.4-122.4V122.4C483.48,54.798,428.682,0,361.08,0z"/>
+                        </g>
+
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+                        <defs>
+                            <linearGradient id="blue-purple-conversely" y1="100%" y2="0%" x1="100%" x2="0%" y1="0%">
+                                <stop offset="0%" stop-color="#8A2BE2"/>
+                                <stop offset="100%" stop-color="#00BFFF"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+<script>
+    const fields = document.getElementById('div-blue-purple-conversely')
+
+    const all_gr = document.querySelectorAll(".div-square-example-gradient-color")
+    all_gr.forEach(function (Gradient, index) {
+        all_gr[index].addEventListener('click', event => {
+            const result = '';
+            const gradient_blue_purple_conversely_text = all_gr[index].getAttribute('data-color')
+            return document.getElementById('id_color').value = gradient_blue_purple_conversely_text;
+        });
+
+    })
+</script>
+
+{% endblock %}

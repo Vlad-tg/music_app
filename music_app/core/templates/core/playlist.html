@@ -1,0 +1,121 @@
+{% extends 'core/index.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static '/core/css/playlist_style.css' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static '/core/css/create_playlist_style.css' %}" type="text/css"/>
+
+
+<div class="div-playlist-block">
+    {% if request.user.is_authenticated %}
+
+    <div class="div-playlist-block-two">
+
+        {% include 'core/create_playlist.html' %}
+
+
+        <div class="div-playlist-block-all-playlist">
+
+            <h2 class="h2-playlist-block-all-playlist-title">YOUR PLAYLISTS</h2>
+
+            <div class="div-playlist-block-all-playlist-two">
+                {% for playlist in playlist_html %}
+                <div class="div-playlist-block-playlist-border" id="playlist-" data-color="{{ playlist.color }}"
+                     style="">
+                    <div class="div-playlist-block-playlist-blue" style="">
+                    </div>
+                    <div class="div-playlist-block-playlist">
+                        <div class="div-playlist-block-playlist-content">
+                            <div class="div-playlist-block-playlist-content-image" style="">
+                                <div class="div-playlist-block-playlist-content-image-two">
+                                    <img class="img-playlist-block-playlist-content-image" alt="image_playlist"
+                                         src="{{ playlist.image.url }}">
+                                </div>
+                            </div>
+                            <div class="div-playlist-block-playlist-content-delete-name">
+                                <div class="div-playlist-block-playlist-content-name" style="">
+                                    <a class="a-playlist-block-playlist-content-name"
+                                       href="{% url 'base_playlist' name=playlist.name %}">
+                                        <p class="p-playlist-block-playlist-content-name">{{ playlist.name }}</p>
+                                    </a>
+                                </div>
+                                <div class="div-playlist-block-playlist-content-delete-button" style="">
+                                    <form action="{% url 'delete_playlist' name=playlist.name %}" method="get">
+                                        <input class="input-playlist-block-playlist-content-delete-button" type="submit"
+                                               value="Delete playlist">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+    {% else %}
+    <div class="div-playlist-block-not-authenticated">
+        <h2 class="h2-playlist-block-not-authenticated">
+            To activate this function, please log in!</h2>
+    </div>
+</div>
+
+
+{% endif %}
+
+<script>
+    function clickHiddenBlock() {
+        const hidden_button = document.querySelector('.button-playlist-block-add-playlist-info-button')
+        const block_hidden = document.querySelector('.div-playlist-block-add-playlist-info-block')
+        const data_active = block_hidden.getAttribute('data-active')
+        if (data_active === 'hidden') {
+            hidden_button.style.display = 'none';
+            block_hidden.style.display = 'block';
+            block_hidden.setAttribute('data-active', 'active');
+        }
+    }
+
+    function clickCloseButton() {
+        const hidden_button = document.querySelector('.button-playlist-block-add-playlist-info-button')
+        const block_hidden = document.querySelector('.div-playlist-block-add-playlist-info-block')
+        const data_active = block_hidden.getAttribute('data-active')
+        if (data_active === 'active') {
+            hidden_button.style.display = 'block';
+            block_hidden.style.display = 'none';
+            block_hidden.setAttribute('data-active', 'hidden');
+        }
+    }
+</script>
+
+
+<script>
+    function createPlaylistBackgroundColor(index) {
+        const playlist = document.querySelector('.div-playlist-block-playlist-border')
+        playlist.setAttribute("id", "playlist-" + index);
+        document.querySelector(".div-playlist-block-all-playlist-two").appendChild(playlist);
+    }
+
+    function addPlaylistBackgroundColor(index) {
+        const playlist = document.getElementById('playlist-' + index)
+        const pl_color = playlist.getAttribute('data-color');
+        const pl_color_shadow = playlist.querySelector('.div-playlist-block-playlist-blue')
+        const pl_color_image = playlist.querySelector('.div-playlist-block-playlist-content-image')
+        const pl_color_name = playlist.querySelector('.div-playlist-block-playlist-content-name')
+        const pl_color_button = playlist.querySelector('.input-playlist-block-playlist-content-delete-button')
+        playlist.setAttribute("style", "" + pl_color);
+        pl_color_shadow.setAttribute("style", "" + pl_color);
+        pl_color_image.setAttribute("style", "" + pl_color);
+        pl_color_name.setAttribute("style", "" + pl_color);
+        pl_color_button.setAttribute("style", "" + pl_color);
+    }
+
+    const all_playlist = document.querySelectorAll(".div-playlist-block-playlist-border")
+    all_playlist.forEach(function (Playlist, index) {
+        createPlaylistBackgroundColor(index)
+        addPlaylistBackgroundColor(index)
+    })
+</script>
+
+{% endblock %}

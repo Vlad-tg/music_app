@@ -1,0 +1,49 @@
+{% extends 'core/index.html' %}
+
+{% load static %}
+
+{% block content %}
+    <title>Title</title>
+
+
+<div class="div-base-genre-player-block">
+
+    <div class="div-base-genre-player-block-genre">
+        <div>
+            <div class="div-base-genre-player-block-genre-imagen">
+                <img class="img-base-genre-player-block-genre-imagen" alt="icon_music"
+                     src="/static/core/img/music_icon.svg">
+            </div>
+            {% for genre in name_genre_html %}
+
+
+            <div class="div-base-genre-player-block-genre-name">
+                <div>
+                    <h2 class="h2-base-genre-player-block-genre-name">{{ genre.name }}</h2>
+                </div>
+                <div class="div-base-genre-player-block-genre-description">
+                    <p class="p-base-genre-player-block-genre-description">{{ genre.description }}</p>
+                </div>
+                <input type="hidden" value="{{ genre.id }}" name="genre_id">
+            </div>
+
+
+            <div class="div-base-genre-player-block-circle-block">
+                <div class="div-base-genre-player-block-circle big-circle">
+                </div>
+                <div class="div-base-genre-player-block-circle middle-circle"></div>
+                <div class="div-base-genre-player-block-circle small-circle-genre"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% include 'core/audio_player.html' %}
+
+</div>
+ {% endfor %}
+
+
+{% endblock %}

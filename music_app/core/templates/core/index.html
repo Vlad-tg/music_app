@@ -1,0 +1,207 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MStory</title>
+    <link rel="stylesheet" href="{% static '/core/css/index_style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static '/core/css/index_top_line_style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static '/core/css/index_left_line_style.css' %}" type="text/css"/>
+
+    <style>
+        body {
+            background: #151515;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<nav class="nav-index-line-top">
+    <div style="width: 150px; height: 70px; margin-left: -85px; overflow: hidden">
+        <div class="div-index-line-top-circle">
+        </div>
+        <div class="div-index-line-top-circle small-circle"></div>
+    </div>
+    <div style="width: 1050px; margin-left: 60px; margin-top: -54px;">
+        <div class="div-index-line-top-search-block">
+            <div class="div-index-line-top-search-block-two">
+                <div class="div-index-line-top-search-button">
+                    <button type="button" class="button-index-line-top-search-button"
+                            id="button-index-line-top-search-button" data-active="hidden">
+                        <img class="img-index-line-top-button" style="height: 30px; width: 30px;"
+                             src="/static/core/img/search.svg" alt="close"></button>
+                </div>
+                <div class="div-index-line-top-search" id="div-index-line-top-search">
+                    <form class="form-index-line-top-search" action="{% url 'search' %}" method="get">
+                        <input class="input-index-line-top-search" id="index-search" type="search" name="search"
+                               placeholder="Search in MusicWebSite......">
+                        <label for="index-search"></label>
+                        <button class="button-index-line-top-search">
+                            <img class="img-index-line-top-button" style="height: 30px; width: 30px;"
+                                 src="/static/core/img/search.svg" alt="close">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="div-index-line-top-user">
+            <div class="div-index-line-top-user-login-account">
+                {% if not request.user.is_authenticated %}
+
+                <a style="text-decoration: none;" href="{% url 'login' %}">
+                    <img class="img-index-line-top-user-login" src="/static/core/img/login.svg" alt="login">
+                    <div>
+                        <p class="p-index-line-top-user-login">Login</p>
+                    </div>
+                </a>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <a style="text-decoration: none;" href="#">
+                    <img class="img-index-line-top-user-account" src="/static/core/img/account_1.svg" alt="account">
+                </a>
+                <a style="text-decoration: none;" href="{% url 'logout' %}">
+                    <p class="p-index-line-top-user-account"><span>|</span> Logout</p>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</nav>
+
+
+<div class="div-index-menu-left">
+    <div class="div-index-menu-left-two">
+        <div class="div-index-manu-left-name-emblem-block">
+            <div class="div-index-menu-circle">
+
+                <div class="div-index-manu-left-name">
+                    <h3 class="h2-index-manu-left-name">MUSICWeBSitE</h3>
+                </div>
+                <div class="div-index-manu-left-name">
+                </div>
+            </div>
+
+            <div class="div-index-manu-left-small-circle">
+            </div>
+
+            <div class="div-index-manu-left-small-circle right">
+            </div>
+        </div>
+
+        <div class="div-index-menu-left-under-emblem">
+            <div class="div-index-menu-left-home-page">
+                <img class="img-index-menu-left-home-page" src="/static/core/img/home.svg" alt="img-genre">
+                <a class="a-index-menu-left-home-page" href="{% url 'main_page' %}">HOMA PAGE</a>
+            </div>
+            <div class="div-index-menu-left-genre">
+                <img class="img-index-menu-left-genre" src="/static/core/img/genre.svg" alt="img-genre">
+                <a class="a-index-menu-left-genre" href="{% url 'genre' %}">GENRE</a>
+            </div>
+            <div class="div-index-menu-left-playlists">
+                <img class="img-index-menu-left-playlists" src="/static/core/img/playlist_icon.svg" alt="img-genre">
+                <a class="a-index-menu-left-playlists" href="{% url 'playlists' %}">YOUR PLAYLISTS</a>
+            </div>
+            <div class="div-index-menu-left-like">
+                <img class="img-index-menu-left-like" src="/static/core/img/like.svg" alt="img-genre">
+                <a class="a-index-menu-left-like" href="{% url 'favorite_track' %}">FAVORITE TRACKS</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% block content %}
+
+<div class="div-index-content">
+    <div class="div-index-content-category">
+        <div class="div-index-content-category-text">
+            <h2 class="h2-index-content-category-text">MUSIC CATEGORY</h2>
+            <div class="div-index-order-category">
+                <form action="{% url 'main_page' %}" method="get">
+                    {% if order_name_html %}
+                    <input class="input-index-order-category active" type="button" name="order-by-name"
+                           value="Sort by name">
+                    {% else %}
+                    <input class="input-index-order-category input-hover" type="submit" name="order-by-name"
+                           value="Sort by name">
+                    {% endif %}
+                    {% if order_name_descending_html %}
+                    <input class="input-index-order-category active" type="button" name="order-by-name-descending"
+                           value="Sort by name descending">
+                    {% else %}
+                    <input class="input-index-order-category input-hover" type="submit" name="order-by-name-descending"
+                           value="Sort by name descending">
+                    {% endif %}
+                    {% if order_date_html %}
+                    <input class="input-index-order-category active" type="button" name="order-by-date"
+                           value="Sort by date">
+                    {% else %}
+                    <input class="input-index-order-category input-hover" type="submit" name="order-by-date"
+                           value="Sort by date">
+                    {% endif %}
+                    {% if order_date_descending_html %}
+                    <input class="input-index-order-category active" type="button" name="order-by-date-descending"
+                           value="Sort by date descending">
+                    {% else %}
+                    <input class="input-index-order-category input-hover" type="submit" name="order-by-date-descending"
+                           value="Sort by date descending">
+                    {% endif %}
+
+                </form>
+            </div>
+        </div>
+
+        <div class="div-index-content-category-in-div">
+            {% for category in category_html %}
+            <div style="" data-color="{{ category.color }}" id="category-"
+                 class="div-index-content-category-herself">
+                <div style="" class="block-filter">
+                </div>
+                <a class="link" style="" href="{% url 'base_category' slug=category.slug %}">
+                    <div class="div-index-content-category-name-image">
+                        <div style=" overflow: hidden; position: relative; top: -280px; width: 200px; border: solid 2px #000;
+                         height: 170px; border-radius: 20px; box-shadow: inset 0 0 15px #000; max-height: 300px;">
+
+                            <img style="width: 180px; height: 150px; position: relative; top: 10px; left: 10px; filter: drop-shadow(0 0 5px #000);  border-radius: 20px; "
+                                 src="{{ category.image.url }}" alt="image_category">
+                        </div>
+                        <div class="div-index-content-category-name">
+                            <p class="p-index-content-category-name">{{ category.name }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+</body>
+<script>
+    function createCategoryBackground(index) {
+        const category = document.querySelector('.div-index-content-category-herself')
+        category.setAttribute("id", "category-" + index);
+        document.querySelector(".div-index-content-category").appendChild(category);
+    }
+
+    function createCategoryBackgroundC(index) {
+        const category_4 = document.getElementById('category-' + index)
+        const category_4_color = category_4.getAttribute('data-color');
+        const category_shadow = category_4.querySelector('.block-filter')
+        category_4.setAttribute("style", "" + category_4_color);
+        category_shadow.setAttribute("style", "" + category_4_color);
+    }
+
+    const all_category = document.querySelectorAll(".div-index-content-category-herself")
+    all_category.forEach(function (Category, index) {
+        createCategoryBackground(index)
+        createCategoryBackgroundC(index)
+    })
+</script>
+<script src="/static/core/js/search_script.js"></script>
+</html>
+
+

@@ -1,0 +1,216 @@
+{% extends 'core/index.html' %}
+
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/core/css/base_song_style.css' %}" type="text/css"/>
+
+<div class="div-base-song" style=" margin-left: 245px; margin-top: 100px; ">
+    <div class="div-base-song-block" style="margin-right: auto; margin-left: auto; width: 1150px; ">
+
+        {% if messages %} {% for message in messages %}
+        <div class="div-base-song-messages">
+            <div class="div-base-song-messages-two">
+                <p class="p-base-song-messages" style="color: #00ffff">
+                    <strong>{{ message }}</strong>
+                </p>
+            </div>
+        </div>
+        {% endfor %} {% endif %}
+
+        {% for song in songs_html %}
+
+        <div class="div-base-song-block-track">
+            {% if user.is_authenticated %}
+            <div style=" width: max-content; margin-left: 361px; margin-right: auto">
+                <div class="div-base-song-block-track-like-block">
+
+                    <div class="div-base-song-block-track-like-count">
+                        <p class="p-base-song-block-track-like-count">({{ like_count_html }})</p>
+                    </div>
+
+                    <div class="div-base-song-block-track-like" style="display: inline-block; pointer-events: auto;">
+
+                        <form class="form-base-song-block-track-like" name="form_like" action="{% url 'add_like' %}"
+                              method="post" data-index="" data-active="">
+                            {% csrf_token %}
+                            <input type="hidden" name="track_id" value="{{ song.id }}">
+                            <input class="input-base-song-block-track-like" type="submit" name="like" value="click"
+                                   id="input-base-song-block-track-like-id">
+                            {% if like_html %}
+                            <label class="label-base-song-block-track-like-active"
+                                   for="input-base-song-block-track-like-id">
+                            </label>
+                            {% else %}
+                            <label class="label-base-song-block-track-like-not-active"
+                                   for="input-base-song-block-track-like-id">
+                            </label>
+                            {% endif %}
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="div-base-song-block-track-image">
+                    <img class="img-base-song-block-track-image" style=""
+                         src="{{ song.image.url }}">
+                    <button class="button-player-block-track" id="track-id" data-audio="{{ music.track_url }}"
+                            data-active=""
+                            onclick="playToPauses()">
+                        <img class="img_play" style="height: 30px; width: 30px; display: block"
+                             src="/static/core/img/img_playlist_player/play_player.svg"
+                             alt="play_to_pause">
+                        <img class="img_pause" style="height: 30px; width: 30px; display: none"
+                             src="/static/core/img/img_playlist_player/pause_player.svg"
+                             alt="play_to_pause">
+                    </button>
+                </div>
+
+
+                <div class="div-base-song-block-track-add-button-block">
+
+                    <div class="div-base-song-block-track-list-playlist" id="block-list-playlist-id">
+                        {% for playlist in playlist_html %}
+                        <form class="" action="{% url 'add_track' slug=song.slug %}" method="get">
+                            <input type="hidden" name="playlist_id" value="{{ playlist.id }}">
+                            {% csrf_token %}
+                            <div style="margin-top: -15px;">
+                                <button class="button-base-song-block-track-playlist" value="{{ playlist.name }}"
+                                        name="add_song" type="submit"><img class="img-base-song-block-track-playlist"
+                                                                           src="/static/core/img/add_hover_button.svg">
+                                </button>
+                                <input class="input-base-song-block-track-playlist" type="button"
+                                       value="{{ playlist.name }}">
+                            </div>
+
+
+                        </form>
+                        {% endfor %}
+
+                    </div>
+
+                    <button class="button-base-song-block-track-add-button" id="button-add-id"
+                            onclick="clickAddPlaylist()" data-active=""><img
+                            class="img-base-song-block-track-add-button" src="/static/core/img/add_track_button.svg"
+                            alt="add_button"></button>
+
+                </div>
+
+
+            </div>
+
+            {% else %}
+
+            <div style=" width: max-content; margin-left: auto; margin-right: auto">
+                <div class="div-base-song-block-track-image">
+                    <img class="img-base-song-block-track-image" style=""
+                         src="{{ song.image.url }}">
+                    <button class="button-player-block-track" data-audio="{{ music.track_url }}"
+                            data-active=""
+                            onclick="playToPauses()">
+                        <img class="img_play" style="height: 30px; width: 30px; display: block"
+                             src="/static/core/img/img_playlist_player/play_player.svg"
+                             alt="play_to_pause">
+                        <img class="img_pause" style="height: 30px; width: 30px; display: none"
+                             src="/static/core/img/img_playlist_player/pause_player.svg"
+                             alt="play_to_pause">
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+
+
+            <div class="div-base-song-block-track-title">
+                <h2 class="h2-base-song-block-track-title" style="color: #00FFFF;">{{ song.title }} -
+                    {{ song.author }}</h2>
+            </div>
+
+            <div class="div-base-song-block-track-info">
+                <div class="div-base-song-block-track-info-two">
+                    <p class="p-base-song-block-track-info">Date added: <span class="span-base-song-block-track-info">{{ song.data_added }}</span>
+                    </p>
+                    <p class="p-base-song-block-track-info">Duration track: <span
+                            class="span-base-song-block-track-info">{{ song.duration_track }}</span></p>
+                    <p class="p-base-song-block-track-info">Format: <span class="span-base-song-block-track-info">{{ song.format }}</span>
+                    </p>
+                    <p class="p-base-song-block-track-info">Size file: <span class="span-base-song-block-track-info">{{ song.size_file }}</span>
+                    </p>
+                    <p class="p-base-song-block-track-info">Bitrate: <span class="span-base-song-block-track-info">{{ song.bitrate }}</span>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="div-base-song-block-audio-player">
+        <audio style="display: none" preload="auto" controls class="audio" id="audio_id"
+               ontimeupdate="nextAudioAfterAudio()">
+            <source class="source-class" id="source-id" src="{{ song.track_url }}" type="audio/mp3">
+        </audio>
+
+        <div class="div-base-song-range" id="div-audio_track-id">
+            <input class="input-base-song-range" type="range" id="audio_track" min="0" max="" value="0"/>
+            <div class="div-base-song-track-time">
+                <div class="div-base-song-track-current-time" id="currentTime">00:00</div>
+                <div class="div-base-song-track-duration-time" id="durationTime">00:00</div>
+            </div>
+        </div>
+        <div class="div-base-song-track-info-action">
+            <div class="div-base-song-track-action">
+                <div class="div-base-song-track-action-button-left">
+                    <button class="button-base-song-rewind" onclick="rewinds()"><img class="img-base-song-rewind"
+                                                                                     style="width: 20px; height: 20px; cursor: pointer;"
+                                                                                     src="/static/core/img/rewind_track.svg">
+                    </button>
+                </div>
+
+                <div class="div-base-song-play-pause">
+                    <button class="button-base-song-play-pause" id="play" onclick="playToPauses()">
+                        <img class="img-base-song-play" id="play-img-one"
+                             style="height: 30px; width: 30px; cursor: pointer; display: block;"
+                             src="/static/core/img/play_player.svg" alt="play">
+                        <img class="img-base-song-pause" id="pause-img-one"
+                             style="height: 30px; width: 30px; display: none; cursor: pointer; "
+                             src="/static/core/img/pause_player.svg"
+                             alt="pause">
+                    </button>
+                </div>
+
+                <div class="div-base-song-track-action-button-right">
+                    <button class="button-base-song-forward" onclick="forwards()">
+                        <img class="img-base-song-forward"
+                             style="width: 20px; height: 20px; cursor: pointer; transform: rotate(0.5turn);"
+                             src="/static/core/img/rewind_track.svg"></button>
+                </div>
+            </div>
+            <div class="div-base-song-track-info">
+                <div class="div-base-song-track-title">{{ song.title }}</div>
+                <div class="div-base-song-track-author">{{ song.author }}</div>
+            </div>
+            <div class="div-base-song-track-download">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<script>
+    function clickAddPlaylist() {
+        const add_button = document.getElementById('button-add-id')
+        const list_playlist = document.getElementById('block-list-playlist-id')
+        const data_active = add_button.getAttribute('data-active')
+
+        if (data_active === '') {
+            add_button.setAttribute('data-active', 'active')
+            list_playlist.style.display = 'block';
+        } else {
+            add_button.setAttribute('data-active', '')
+            list_playlist.style.display = 'none';
+        }
+    }
+
+</script>
+<script src="/static/core/js/base_song_audio_player_script.js"></script>
+{% endblock %}

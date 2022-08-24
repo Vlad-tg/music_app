@@ -1,0 +1,141 @@
+/* icon category style ---------------------------------------------------------------------------------------------  */
+
+.div-index-content {
+    margin-top: 125.8px;
+    margin-left: 242px;
+    max-width: 1530px;
+    min-width: 650px;
+    height: 1000px;
+    margin-right: -8px;
+}
+
+.div-index-content-category {
+    padding-left: 47px;
+    overflow: hidden;
+}
+
+.div-index-content-category-in-div {
+    align-items: center;
+}
+
+.div-index-content-category-herself {
+    float: left;
+    margin-right: 44px;
+    margin-bottom: 45px;
+    width: 250px;
+    height: 300px;
+    border-radius: 20px;
+    z-index: 1;
+    border: solid 1px #000;
+    transition: all 10ms linear;
+}
+
+.div-index-content-category-herself:hover {
+    filter: opacity(90%);
+    transition: all 10ms linear;
+}
+
+.block-filter {
+    position: relative;
+    float: left;
+    width: 250px;
+    height: 300px;
+    filter: blur(15px);
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* image icon category style ---------------------------------------------------------------------------------------  */
+
+.div-index-content-category-name-image {
+    margin-left: auto;
+    margin-right: auto;
+    width: 204px;
+    max-height: 300px;
+}
+
+/* name icon category style ----------------------------------------------------------------------------------------  */
+
+.div-index-content-category-name {
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: inset 0 0 15px #000;
+    width: 204px;
+    height: 70px;
+    position: relative;
+    top: -280px;
+}
+
+.p-index-content-category-name {
+    height: 50px;
+    width: 180px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 5px #000;
+    text-decoration: none;
+    font-family: fantasy, serif;
+    font-size: 95%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.link {
+    text-decoration: none;
+}
+
+/* title style -----------------------------------------------------------------------------------------------------  */
+
+.div-index-content-category-text {
+    margin-left: 20px;
+    margin-top: -20px;
+    margin-bottom: 35.8px;
+}
+
+.h2-index-content-category-text {
+    color: #00FFFF;
+    margin-bottom: 25px;
+    text-shadow: 0 0 5px #000;
+    font-family: Tahoma, serif;
+}
+
+/* order category --------------------------------------------------------------------------------------------------  */
+
+.input-index-order-category {
+    background: transparent;
+    border: solid 1px #EE82EE;
+    border-radius: 5px;
+    color: #EE82EE;
+    height: 30px;
+    cursor: pointer;
+}
+
+.input-index-order-category {
+    background: transparent;
+    padding-bottom: 3px;
+    border: solid 2px #EE82EE;
+    border-radius: 5px;
+    color: #EE82EE;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #000, inset 0 0 5px #EE82EE;
+    font-family: Tahoma, serif;
+}
+
+.input-hover:hover {
+    box-shadow: 0 0 5px #EE82EE;
+}
+
+.active {
+    background: transparent;
+    box-shadow: inset 0 0 5px rgba(0, 255, 255, 1);
+    color: rgba(0, 255, 255, 1);
+    border: solid 2px rgba(0, 255, 255, 1);
+    cursor: default;
+    border-radius: 15px;
+    position: relative;
+    top: -8px;
+}
+

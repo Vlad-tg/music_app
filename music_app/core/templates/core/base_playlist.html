@@ -1,0 +1,324 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static '/core/css/player_base_playlist_style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static '/core/css/animation_for_base_playlist_style.css' %}" type="text/css"/>
+
+</head>
+<body>
+
+{% if request.user.is_authenticated %}
+{% for playlist in playlist_html %}
+{% if playlist.track.count > 0 %}
+<div>
+    <div style="max-width: 1400px; margin-right: auto; margin-left: auto; height: 600px; ">
+        <div class="div-base-playlist-a" style="float: left; margin-left: 160px; margin-bottom: -470px;">
+            <div class="div-base-playlist-a-two" style="position: relative;">
+                <div class="div-base-playlist-a-all-beats" style="margin-bottom: -180px;">
+
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+
+                </div>
+
+                <div class="div-base-playlist-a-circle-border">
+                    <div class="div-base-playlist-a-circle-black">
+                        <div class="div-base-playlist-a-two-circle-center">
+                            <div class="div-base-playlist-a-two-circle-center-black">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="div-base-playlist-player-block-player" style="height: 450px; float: left; position: relative;">
+            <div class="div-base-playlist-player-block" data-color="{{ playlist.color }}" style="">
+
+                <div class="div-base-playlist-player-block-blur" style="">
+                </div>
+                <div class="div-base-playlist-player-block-two">
+
+                    <div class="div-base-playlist-player-track-info-block">
+                        <div class="div-base-playlist-player-track-image">
+                            <div class="div-base-playlist-player-track-image-two">
+                                <img class="img-base-playlist-player-track-image"
+                                     src="{{ first_track_playlist.track.image.url }}" alt="img_track">
+                            </div>
+                        </div>
+
+                        <div class="div-base-playlist-player-track-info">
+                            <div class="div-base-playlist-player-track-title">{{ first_track_playlist.track.title }}
+                            </div>
+                            <div class="div-base-playlist-player-track-author">{{ first_track_playlist.track.author }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="div-base-playlist-player-track-action-block">
+                        <audio style="display: none" preload="auto" controls class="audio" id="audio"
+                               ontimeupdate="nextAudioAfterAudio()">
+                            <source class="source-class" id="source-id" src="{{ first_track_playlist.track.track_url }}"
+                                    type="audio/mp3">
+                        </audio>
+
+
+                        <div class="div-base-playlist-player-range" id="div-audio_track-id">
+                            <input class="input-base-playlist-player-range" type="range" id="audio_track" min="0" max=""
+                                   value="0"/>
+                            <div class="div-base-playlist-player-track-time">
+                                <div class="div-base-playlist-player-track-current-time" id="currentTime">00:00</div>
+                                <div class="div-base-playlist-player-track-duration-time" id="durationTime">
+                                    0{{ first_track_playlist.track.duration_track }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="div-base-playlist-player-track-action">
+                            <div class="div-base-playlist-player-track-action">
+                                <div class="div-base-playlist-player-track-action-button-left">
+                                    <button class="button-base-playlist-player-skip prev" id="prev"
+                                            onclick="previousAudio()">
+                                        <img
+                                                class="img-base-playlist-player-skip"
+                                                style="width: 20px; height: 20px; cursor: pointer;"
+                                                src="/static/core/img/img_playlist_player/skip_track.svg">
+                                    </button>
+                                    <button class="button-base-playlist-player-rewind" onclick="rewind()">
+                                        <img
+                                                class="img-base-playlist-player-rewind"
+                                                style="width: 20px; height: 20px; cursor: pointer;"
+                                                src="/static/core/img/img_playlist_player/rewind_track.svg">
+                                    </button>
+                                </div>
+                                <div class="div-base-playlist-player-play-pause">
+                                    <button style="display: none;" class="button-base-playlist-player-play-pause"
+                                            data-active-play="pass" onclick="toggleAudio()" id="play">
+                                        <img class="img-base-playlist-player-play" id="play-img-one"
+                                             style="height: 30px; width: 30px; cursor: pointer; "
+                                             src="/static/core/img/img_playlist_player/play_player.svg" alt="play">
+                                        <img class="img-base-playlist-player-pause" id="pause-img-one"
+                                             style="height: 30px; width: 30px; display: none; cursor: pointer; "
+                                             src="/static/core/img/img_playlist_player/pause_player.svg"
+                                             alt="pause">
+                                    </button>
+                                    <button style="display: block;" class="button-base-playlist-player-play-pause"
+                                            id="hidden-play-id" type="button" onclick="clickAD()"><img
+                                            class="img-base-playlist-player-play"
+                                            style="height: 30px; width: 30px; cursor: pointer; "
+                                            src="/static/core/img/img_playlist_player/play_player.svg" alt="play">
+                                    </button>
+                                </div>
+                                <div class="div-base-playlist-player-track-action-button-right">
+                                    <button class="button-base-playlist-player-forward" onclick="forward()">
+                                        <img class="img-base-playlist-player-forward"
+                                             style="width: 20px; height: 20px; cursor: pointer; transform: rotate(0.5turn);"
+                                             src="/static/core/img/img_playlist_player/rewind_track.svg"></button>
+                                    <button class="button-base-playlist-player-skip next" id="next"
+                                            onclick="nextAudio()">
+                                        <img
+                                                class="img-base-playlist-player-skip next-track"
+                                                style="width: 20px; height: 20px; cursor: pointer; transform: rotate(0.5turn);"
+                                                src="/static/core/img/img_playlist_player/skip_track.svg"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="div-base-playlist-player-block-hidden">
+                <div class="div-base-playlist-player-block-hidden-button-x">
+                    <img class="img-base-playlist-player-block-hidden-button-x" style="height: 10px; width: 10px;"
+                         src="/static/core/img/img_playlist_player/close.svg" onclick="clickCloseHiddenTrackList()"
+                         alt="close"></div>
+                <div class="div-base-playlist-player-block-hidden-button" id="hidden-button" data-active=""
+                     onclick="clickHiddenTrackList()">
+                    <div style="display: none;" class="player-song">
+                        {% for playlist_track in playlist.track.all %}
+                        <button class="button-player-block-track" style="height: 55px; display: block; "
+                                data-name="{{ playlist_track.track.title }}" data-index=""
+                                data-audio="{{ playlist_track.track.track_url }}"
+                                data-image="{{ playlist_track.track.image.url }}" data-active=""
+                                id="track-id-" data-author="{{ playlist_track.track.author }}">
+                            <div class="div-base-playlist-player-block-track-all">
+                                <div class="div-base-playlist-player-track-img">
+                                    <img class="img-base-playlist-player-track-imagen"
+                                         src="{{ playlist_track.track.image.url }}"
+                                         alt="music_icon">
+                                </div>
+                                <div class="div-base-playlist-player-block-track-info">
+                                    <div>
+                                        <p class="p-base-playlist-player-block-track-title"
+                                           id="track-title-id">
+                                            {{ playlist_track.track.title }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="p-base-playlist-player-block-track-author"
+                                           id="track-author-id">
+                                            {{ playlist_track.track.author }}</p>
+                                    </div>
+                                </div>
+                                <div class="div-base-playlist-player-block-track-delete">
+                                    <form id="form-delete"
+                                          action="{% url 'delete_track_in_playlist' name=playlist.name %}"
+                                          method="get">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="track_id" value="{{ playlist_track.id }}">
+                                        <input type="hidden" name="track_slug" value="{{ playlist_track.track.slug }}">
+                                        <input class="input-base-playlist-player-block-track-delete" type="submit"
+                                               id="input-delete-track-from-playlist-id-" value="">
+                                        <label id="label-delete-track-from-playlist-id-"
+                                               for="input-delete-track-from-playlist-id-"><img class="img-delete-button"
+                                                                                               src="/static/core/img/img_playlist_player/delete_button.svg"
+                                                                                               alt="delete-track"></label>
+                                    </form>
+                                </div>
+                            </div>
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="div-base-playlist-a-right" style="float: right; margin-right: 83px;">
+            <div class="div-base-playlist-a-two-right"
+                 style="position: relative; top: -372px; margin-bottom: -372px;  transform: rotate(0.25turn);">
+                <div class="div-base-playlist-a-all-beats" style="margin-bottom: -180px;">
+
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+                    <div class="div-base-playlist-a-beat"></div>
+
+                </div>
+
+                <div class="div-base-playlist-a-circle-border">
+                    <div class="div-base-playlist-a-circle-black">
+                        <div class="div-base-playlist-a-two-circle-center">
+                            <div class="div-base-playlist-a-two-circle-center-black">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% else %}
+<div class="div-base-playlist-player-block-not-track">
+    <h2 class="h2-base-playlist-player-block-not-track">You haven't tracks in this playlist.<br>
+        Please add tracks to this playlist!</h2>
+</div>
+
+{% endif %}
+{% endfor %}
+{% endif %}
+</body>
+<script>
+    window.onload = function () {
+
+        const player = document.querySelector('.div-base-playlist-player-block')
+        const player_color = player.getAttribute('data-color');
+        const player_color_shadow = player.querySelector('.div-base-playlist-player-block-blur')
+        player.setAttribute("style", "" + player_color);
+        player_color_shadow.setAttribute("style", "" + player_color);
+
+    }
+
+</script>
+
+<script>
+    function clickHiddenTrackList() {
+        const hidden_button = document.getElementById('hidden-button')
+        const player_song = document.querySelector('.player-song')
+        const a_right = document.querySelector('.div-base-playlist-a-right')
+        const x = document.querySelector('.div-base-playlist-player-block-hidden-button-x')
+        const block_hidden = document.querySelector('.div-base-playlist-player-block-hidden-button')
+        const data_active = hidden_button.getAttribute('data-active')
+        if (data_active === '') {
+            hidden_button.style.width = '332px';
+            hidden_button.setAttribute('data-active', 'active')
+            a_right.style.top = '0'
+            block_hidden.style.top = '-10px';
+            hidden_button.style.overflow = 'auto';
+            x.style.display = 'block';
+            player_song.style.display = 'block';
+        }
+    }
+
+    function clickCloseHiddenTrackList() {
+        const hidden_button = document.getElementById('hidden-button')
+        const player_song = document.querySelector('.player-song')
+        const block_hidden = document.querySelector('.div-base-playlist-player-block-hidden-button')
+        const a_right = document.querySelector('.div-base-playlist-a-right')
+
+        const x = document.querySelector('.div-base-playlist-player-block-hidden-button-x')
+        const data_active = hidden_button.getAttribute('data-active')
+        if (data_active === 'active') {
+            hidden_button.style.width = '20px';
+            hidden_button.setAttribute('data-active', '')
+            block_hidden.style.top = '0';
+            hidden_button.style.overflow = 'none';
+            x.style.display = 'none';
+            a_right.style.top = '452px'
+            player_song.style.display = 'none';
+        }
+    }
+
+
+    const form_delete = document.querySelectorAll("#form-delete")
+    form_delete.forEach(function (deleteButtonScript, index) {
+
+        const input_delete_button = document.querySelectorAll("#input-delete-track-from-playlist-id-")
+        for (let i = 0; i < input_delete_button.length; i++) {
+            input_delete_button[i].setAttribute('id', 'input-delete-track-from-playlist-id-' + i)
+        }
+        const label_delete_button = document.querySelectorAll("#label-delete-track-from-playlist-id-")
+        for (let i = 0; i < label_delete_button.length; i++) {
+            label_delete_button[i].setAttribute('for', 'input-delete-track-from-playlist-id-' + i)
+        }
+    })
+
+
+</script>
+
+<script src="/static/core/js/player_base_playlist_script.js"></script>
+
+</html>

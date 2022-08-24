@@ -1,0 +1,48 @@
+{% extends 'core/index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="div-base-category-player-block">
+
+    <div class="div-base-category-player-block-category">
+        {% for category in name_category_html %}
+        <div class="div-base-category-player-block-category-imagen">
+            <img class="img-base-category-player-block-category-imagen" src="{{ category.image.url }}"
+                 alt="imagen_category">
+        </div>
+        <div class="div-base-category-player-block-category-name-description">
+            <div class="div-base-category-player-block-category-name">
+                <h1 class="h1-base-category-player-block-category-name">{{ category.name }}</h1>
+            </div>
+            <div class="div-base-category-player-block-category-description">
+                <p class="p-base-category-player-block-category-description">{{ category.description }}</p>
+            </div>
+
+        </div>
+        {% endfor %}
+
+        <div style="position: absolute; top: 280px; left: 1260px; max-width: max-content; overflow: hidden;">
+            <div class="div-base-genre-player-block-circle contrary-middle-circle"></div>
+        </div>
+
+        <div class="div-base-category-player-block-circle-block">
+            <div class="div-base-genre-player-block-circle big-circle">
+            </div>
+            <div class="div-base-genre-player-block-circle middle-circle"></div>
+
+            <div class="div-base-genre-player-block-circle small-circle-genre"></div>
+
+            <div class="div-base-genre-player-block-circle contrary-big-circle">
+            </div>
+
+
+        </div>
+    </div>
+
+    {% include 'core/audio_player.html' %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,238 @@
+/* info button(visible) style --------------------------------------------------------------------------------------- */
+
+.button-playlist-block-add-playlist-info-button {
+    position: relative;
+    height: 40px;
+    width: 140px;
+    display: block;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-size: 95%;
+    font-family: fantasy, serif;
+    background: #EE82EE;
+    margin-bottom: 35px;
+    box-shadow: 0 0 10px #EE82EE;
+}
+
+
+.button-playlist-block-add-playlist-info-button:hover {
+    background: #d675d6;
+
+}
+
+/* block (add playlist) style --------------------------------------------------------------------------------------- */
+
+/* info block style ------------------------------------------------------------------------------------------------- */
+
+.div-playlist-block-add-playlist-info-block {
+    display: none;
+    width: 1085px;
+    height: 400px;
+    background: #151515;
+    box-shadow: 0 0 15px #00FFFF;
+    margin-bottom: 35px;
+    border-radius: 10px;
+    outline: solid 4px #00FFFF;
+    margin-left: 28px;
+}
+
+/* close button style ----------------------------------------------------------------------------------------------- */
+.div-playlist-block-add-playlist-button-x {
+    float: right;
+    position: relative;
+    top: 8px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.img-playlist-block-add-playlist-button-x:hover {
+    transform: scale(1.1);
+}
+
+/* info style ------------------------------------------------------------------------------------------------------- */
+
+.div-playlist-block-add-playlist-info {
+    height: 150px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 40px;
+    position: relative;
+}
+
+.form-playlist-block-add-playlist-info {
+    margin-left: 100px;
+}
+
+#id_name {
+    width: 400px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    border-radius: 5px;
+    background: #222;
+    border: solid 2px #EE82EE;
+    box-shadow: inset 0 0 10px #000, 0 0 5px #EE82EE;
+    color: #00CED1;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+#id_name:focus {
+    outline: none;
+    background: rgba(139, 0, 139, 0.1);
+    animation: glow 2s ease-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        border-color: #111;
+        box-shadow: 0 0 5px rgba(238, 130, 238, .2), inset 0 0 10px #000, 0 2px 0 #000;
+    }
+    100% {
+        border-color: #EE82EE;
+        box-shadow: 0 0 20px rgba(238, 130, 238, .6), inset 0 0 10px #000, 0 2px 0 #000;
+    }
+}
+
+
+.input-playlist-block-add-playlist-submit {
+    height: 40px;
+    width: 80px;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-size: 95%;
+    font-family: fantasy, serif;
+    background: #00FFFF;
+    box-shadow: 0 0 10px #00FFFF;
+}
+
+.input-playlist-block-add-playlist-submit:hover {
+    background: #00CED1;
+}
+
+/* playlist background color style ---------------------------------------------------------------------------------- */
+
+#id_color {
+    display: none;
+}
+
+#error_1_id_name {
+    display: none;
+}
+
+
+.div-playlist-block-add-playlist-image {
+    width: 400px;
+}
+
+#id_image::-webkit-file-upload-button {
+    visibility: hidden;
+    pointer-events: none;
+    height: 35px;
+}
+
+#id_image {
+    width: 123px !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-playlist-block-add-playlist-image-name {
+    font-size: 85%;
+    color: #00FFFF;
+    font-family: Tahoma, serif;
+}
+
+#id_image::before {
+    content: "Upload image";
+    display: inline-block;
+    background: transparent;
+    outline: solid 2px #EE82EE;
+    color: #EE82EE;
+    position: relative;
+    top: 2px;
+    margin-left: 4px;
+    font-family: Tahoma, serif;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+#id_image:hover::before {
+    box-shadow: 0 0 10px #EE82EE;
+}
+
+
+#gradient-0 {
+    fill: url(#pink-purple);
+}
+
+#gradient-0-conversely {
+    fill: url(#pink-purple-conversely);
+}
+
+#gradient-1 {
+    fill: url(#red-yellow);
+}
+
+#gradient-1-conversely {
+    fill: url(#red-yellow-conversely);
+}
+
+#gradient-2 {
+    fill: url(#blue-purple);
+}
+
+#gradient-2-conversely {
+    fill: url(#blue-purple-conversely);
+}
+
+.p-playlist-block-choose-color-help-text {
+    font-family: Tahoma, serif;
+    color: #00FFFF;
+    width: 400px;
+    text-align: center;
+}
+
+.div-all-square-example-gradient-color {
+    width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.div-square-example-gradient-color {
+    border-radius: 14px;
+    display: inline-block;
+    box-shadow: none;
+    margin-left: 10px;
+    height: 49px;
+    cursor: pointer;
+    width: 49px;
+    z-index: 1;
+    background: transparent;
+
+}
+
+.div-square-example-gradient-color:checked {
+    border: solid 2px #000;
+}
+
+
+.div-square-example-gradient-color:hover {
+    box-shadow: 0 0 10px #fff;
+
+}
+
+.field-color {
+    margin-top: 100px;
+}
+
+

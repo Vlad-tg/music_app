@@ -1,0 +1,123 @@
+{% load crispy_forms_tags %}
+
+<div class="div-playlist-block-add-playlist">
+
+    <button onclick="clickHiddenBlock()" type="button" id="hidden_button"
+            class="button-playlist-block-add-playlist-info-button">Create playlist
+    </button>
+
+    <div class="div-playlist-block-add-playlist-info-block" data-active="hidden">
+        <div class="div-playlist-block-add-playlist-button-x">
+            <img class="img-playlist-block-add-playlist-button-x" style="height: 20px; width: 20px;"
+                 src="/static/core/img/img_playlist/close.svg" onclick="clickCloseButton()"
+                 alt="close"></div>
+
+        <div class="div-playlist-block-add-playlist-info">
+            <form class="form-playlist-block-add-playlist-info" enctype="multipart/form-data"
+                  action="{% url 'create_playlist' %}"
+                  method="post">
+                {% csrf_token %}
+                {{ form.name }}
+                {{ form.color }}
+                <div>
+                    <p class="p-playlist-block-choose-color-help-text">You need to choose the background color for
+                        playlist</p>
+                    <div class="div-all-square-example-gradient-color">
+                        <center>
+                            <div style="width: 400px; border-radius: 10px; height: 50px;">
+                                <div class="div-square-example-gradient-color"
+                                     style="margin-left: 0; background: linear-gradient(135deg, rgba(136, 78, 160, 1) 0%, rgba(255,20,147, 1) 100%);"
+                                     id="color-id-0"
+                                     data-active="not_active"
+                                     data-color="background: linear-gradient(135deg, rgba(136, 78, 160, 1) 0%, rgba(255,20,147, 1) 100%);">
+
+                                </div>
+
+                                <div class="div-square-example-gradient-color"
+                                     style="background: linear-gradient(135deg, rgba(255,20,147, 1) 0%, rgba(136, 78, 160, 1) 100%);"
+                                     id="color-id-1" data-active="not_active"
+                                     data-color="background: linear-gradient(135deg, rgba(255,20,147, 1) 0%, rgba(136, 78, 160, 1) 100%);">
+
+                                </div>
+
+                                <div class="div-square-example-gradient-color" id="color-id-2"
+                                     style="background: linear-gradient(135deg, rgba(220,20,60, 1) 0%, rgba(255,215,0, 1) 100%);"
+                                     data-active="not_active"
+                                     data-color="background: linear-gradient(135deg, rgba(220,20,60, 1) 0%, rgba(255,215,0, 1) 100%);">
+
+                                </div>
+
+                                <div class="div-square-example-gradient-color" id="color-id-3"
+                                     style="background: linear-gradient(135deg, rgba(255,215,0, 1) 0%,rgba(220,20,60, 1) 100%);"
+                                     data-active="not_active"
+                                     data-color="background: linear-gradient(135deg, rgba(255,215,0, 1) 0%,rgba(220,20,60, 1) 100%);">
+
+                                </div>
+
+                                <div class="div-square-example-gradient-color" id="color-id-4"
+                                     style="background: -webkit-linear-gradient(135deg, #00BFFF 0%, #8A2BE2 100%);"
+                                     data-active="not_active"
+                                     data-color="background: -webkit-linear-gradient(135deg, #00BFFF 0%, #8A2BE2 100%);">
+
+                                </div>
+
+                                <div class="div-square-example-gradient-color"
+                                     style="background: -webkit-linear-gradient(145deg, #8A2BE2 0%, #00BFFF 100%);"
+                                     data-color="background: -webkit-linear-gradient(145deg, #8A2BE2 0%, #00BFFF 100%);"
+                                     id="color-id-5" data-active="not_active">
+
+                                </div>
+
+                            </div>
+
+                        </center>
+                    </div>
+                </div>
+                <div class="div-playlist-block-add-playlist-image">
+                    <center>
+                        {{ form.image }}
+                        <p id="p-image-name-id" class="p-playlist-block-add-playlist-image-name"></p>
+                    </center>
+                </div>
+
+                <div style="width: 400px;">
+                    <center>
+                        <input class="input-playlist-block-add-playlist-submit" type="submit" value="Create">
+                    </center>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    const all_gr = document.querySelectorAll(".div-square-example-gradient-color")
+    all_gr.forEach(function (Gradient, index) {
+        all_gr[index].addEventListener('click', event => {
+            const div_gr_attribute = all_gr[index].getAttribute('data-active')
+            if (div_gr_attribute === 'not_active') {
+                const test = document.querySelectorAll('.div-square-example-gradient-color')
+                test.forEach(function (changeBorder, index) {
+                    test[index].style.outline = "none"
+                    test[index].setAttribute('data-active', 'not_active')
+                })
+                all_gr[index].style.outline = "solid 3px #fff";
+                all_gr[index].setAttribute('data-active', 'active')
+            }
+            const gradient_conversely_text = all_gr[index].getAttribute('data-color')
+            return document.getElementById('id_color').value = gradient_conversely_text;
+        });
+    })
+</script>
+
+<script>
+    const inp_image = document.getElementById('id_image')
+    const p_image_name = document.getElementById('p-image-name-id')
+    inp_image.addEventListener('change', function (event) {
+        p_image_name.textContent = 'Image successfully added';
+    })
+</script>
+
