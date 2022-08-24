@@ -7,6 +7,8 @@ User = get_user_model()
 
 
 class Genre(models.Model):
+    """ Model genre """
+
     name = models.CharField(verbose_name="Genre", max_length=255)
     slug = models.SlugField(verbose_name="Slug", allow_unicode=True, unique=True)
     image = models.ImageField(verbose_name='Imagine', upload_to=r'img_genre/', default='/img/default.jpg')

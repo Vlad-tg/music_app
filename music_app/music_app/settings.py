@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'captcha',
     'django_filters',
     'rest_framework',
-
 ]
 
 MIDDLEWARE = [
